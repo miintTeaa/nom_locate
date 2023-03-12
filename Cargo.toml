@@ -1,5 +1,9 @@
 [package]
-authors = ["Florent FAYOLLE <florent.fayolle69@gmail.com>", "Christopher Durham <cad97@cad97.com>", "Valentin Lorentz <progval+git@progval.net>"]
+authors = [
+    "Florent FAYOLLE <florent.fayolle69@gmail.com>",
+    "Christopher Durham <cad97@cad97.com>",
+    "Valentin Lorentz <progval+git@progval.net>",
+]
 categories = ["parsing"]
 description = "A special input type for nom to locate tokens"
 documentation = "https://docs.rs/nom_locate/"
@@ -21,10 +25,13 @@ std = ["nom/std", "alloc", "memchr/use_std"]
 alloc = ["nom/alloc"]
 generic-simd = ["bytecount/generic-simd"]
 runtime-dispatch-simd = ["bytecount/runtime-dispatch-simd"]
+serde = ["dep:serde", "dep:serde_derive"]
 stable-deref-trait = ["stable_deref_trait"]
 
 [dependencies]
 bytecount = "^0.6"
-memchr = { version = ">=1.0.1, <3.0.0", default-features = false } # ^1.0.0 + ^2.0
+memchr = { version = ">=1.0.1, <3.0.0", default-features = false }                 # ^1.0.0 + ^2.0
 nom = { version = "7", default-features = false }
+serde = { version = "1.0.155", optional = true }
+serde_derive = { version = "1.0.155", optional = true }
 stable_deref_trait = { version = "^1", optional = true, default-features = false }

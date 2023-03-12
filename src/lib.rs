@@ -115,6 +115,8 @@ use nom::{
     AsBytes, Compare, CompareResult, Err, FindSubstring, FindToken, IResult, InputIter,
     InputLength, InputTake, InputTakeAtPosition, Offset, ParseTo, Slice,
 };
+#[cfg(feature = "serde")]
+use serde_derive::{Deserialize, Serialize};
 #[cfg(feature = "stable-deref-trait")]
 use stable_deref_trait::StableDeref;
 
@@ -124,6 +126,7 @@ use stable_deref_trait::StableDeref;
 /// The `LocatedSpan` structure can be used as an input of the nom parsers.
 /// It implements all the necessary traits for `LocatedSpan<&str,X>` and `LocatedSpan<&[u8],X>`
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct LocatedSpan<T, X = ()> {
     /// The offset represents the position of the fragment relatively to
     /// the input of the parser. It starts at offset 0.
